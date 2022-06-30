@@ -1,0 +1,20 @@
+﻿
+@using MyAdvices.Entities
+@using MyAdvices.Web.Models
+
+@{ 
+
+    List<Category> list = CacheHelper.GetCategoriesFromCache();
+
+}
+
+
+
+<nav class="nav nav-pills nav-justified y-menu">
+    <a class="nav-link y-menu active" href="/Home/Index" >Tümü</a>
+    @foreach (Category category in list)
+    {
+        <a class="nav-link y-menu" href="/Home/ByCategory/@category.Id" title="@category.Description">@category.Title</a>
+    }
+
+</nav>

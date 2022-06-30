@@ -1,0 +1,70 @@
+﻿@using MyAdvices.Entities.ValueObject
+@model LoginViewModel
+
+
+@{
+    ViewBag.Title = "Giriş Sayfası";
+}
+
+
+<link href="~/Content/login-register.css" rel="stylesheet" />
+
+
+@using (Html.BeginForm())
+{
+    <main class="login-form">
+        <div class="cotainer">
+            <div class="row justify-content-center">
+                <div class="col-md-6">
+                    <div class="card">
+
+                        <div class="card-header">Giriş Paneli</div>
+                        
+                        <div class="card-body">
+                            <div class="mb-2">
+                                @Html.ValidationSummary(false)
+                                @if (ViewBag.SetLink != null)
+                                {
+                                    <br />
+                                    <a href="@ViewBag.SetLink" class="btn btn-primary text-center">Active</a>
+                                }
+                            </div>
+                            <form action="" class="mt-1">
+                                <div class="form-group row mb-1">
+
+                                    <label for="email_address" class="col-md-4 col-form-label text-md-right">E-Mail Adresi</label>
+                                    <div class="col-md-6">
+                                        @Html.TextBoxFor(model => model.Username, new { @class = "form-control", placeholder = "E-Mail Adresinizi Girin" })
+
+                                    </div>
+                                </div>
+                                <div class="form-group row">
+                                    <label for="password" class="col-md-4 col-form-label text-md-right">Parola</label>
+                                    <div class="col-md-6">
+                                        @Html.TextBoxFor(model => model.Password, new { @class = "form-control", placeholder = "Parolanızı Girin", type = "password" })
+
+                                    </div>
+                                </div>
+                                <br />
+                                <div class="col-md-5 offset-md-5">
+                                    <button type="submit" class="btn btn-primary">
+                                        Giriş Yap
+                                    </button>
+                                    <a href="#" class="btn btn-link">
+                                        Parolanızı mı unuttunuz?
+                                    </a>
+                                </div>
+                            </form>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+    </main>
+}
+
+
+

@@ -1,0 +1,54 @@
+﻿@using MyAdvices.Web.ViewModels
+@model InfoViewModel
+@{
+    ViewBag.Title = Model.Title;
+}
+
+<link href="~/Content/login-register.css" rel="stylesheet" />
+
+<main class="login-form">
+    <div class="cotainer">
+        <div class="row justify-content-center">
+            <div class="col-md-8">
+                <div class="card">
+                    <div class="card-header"><h3>@Model.Header...</h3></div>
+                    <div class="card-body">
+                        <form action="">
+                            <div class="form-group row text-info">
+
+                                <h4><span class="glyphicom glyphicon-info-sign"></span>@Model.Title..</h4>
+
+                            </div>
+                            <div class="form-group row">
+                                <p class="text-justify">
+                                    @foreach (string msg in Model.Items)
+                                    {
+                                        @msg<br />
+                                    }
+                                </p>
+
+                            </div>
+                            <br />
+
+                        </form>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+</main>
+@{
+    string js = string.Empty;
+    if (Model.IsRedirecting)
+    {
+        js = "setTimeout(function () {window.location = '" + Model.RedirectingUrl + "';}," + Model.RedirectingTimeout + ");";
+    }
+}
+<script>
+    $(function () {
+      @Html.Raw(js);
+    });
+</script>
+
